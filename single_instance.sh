@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # prevent multi instances of current script
-exec 9>/var/run/lock/myscript.lck
-flock -n 9 || exit 1
+exec {lock_fd}>/var/run/lock/myscript.lck
+flock -n $lock_fd || exit 1
 
 echo "running"
 sleep 10
