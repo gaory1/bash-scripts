@@ -1,0 +1,26 @@
+#!/bin/bash
+
+pid=$(pgrep vmplayer)
+if test -z "$pid"
+then
+	echo vmplayer not found
+	exit 1
+fi
+if test $(echo "$pid" | wc -w) -gt 1
+then
+	echo "more than one vmplayer found"
+	exit 1
+fi
+
+echo "waiting for vmplayer pid $pid"
+
+pwait $pid
+
+echo vmplayer is down
+
+for a in $(seq 60 -1 1)
+do
+	echo suspend in $a seconds
+	sleep 1
+done
+systemctl suspend
