@@ -1,0 +1,10 @@
+#!/bin/bash
+
+pid=$1
+test -z "$pid" && exit 1
+
+while test -e /proc/$pid
+do
+	sleep 1
+done
+
