@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if test $(whoami) != root
+then
+	exec sudo $0 $@
+fi
+
+n=$(iptables -t nat -L OUTPUT -n | tail -n +3 | awk '/^REDSOCKS/{print NR}')
+
+test -n "$n" && iptables -t nat -D OUTPUT $n
+iptables -t nat -F REDSOCKS
+iptables -t nat -X REDSOCKS
+
+service redsocks stop
+
