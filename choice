@@ -1,0 +1,13 @@
+#!/bin/bash
+
+size=$#
+if test $size = 0; then
+    echo "usage: $0 <choice1> <choice2> ..."
+    exit
+fi
+
+n=$(hexdump -n 1 -e '/1 "%02u"' /dev/random)
+
+choice=$[n%size]
+
+echo ${BASH_ARGV[$choice]}

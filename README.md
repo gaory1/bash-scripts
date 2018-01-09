@@ -10,3 +10,4 @@ Common bash scripts, either as examples or ready-to-use
 * redsocks_on - Start redsocks service and add iptables rules(启动redsocks服务并添加防火墙规则)
 * redsocks_off - Stop redsocks service and remove iptables rules(停止redsocks服务并删除防火墙规则)
 * roll - Get a random integer(取一个随机整数)
+* choice - Make a random choice(随机选择)
