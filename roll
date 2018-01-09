@@ -1,0 +1,11 @@
+#!/bin/bash
+
+max=$1
+
+n=$(hexdump -n 1 -e '/1 "%02u"' /dev/random)
+
+if test "$max" == ""; then
+    echo $n
+else
+    echo $[n%(max+1)]
+fi
