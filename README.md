@@ -11,3 +11,4 @@ Common bash scripts, either as examples or ready-to-use
 * redsocks_off - Stop redsocks service and remove iptables rules(停止redsocks服务并删除防火墙规则)
 * roll - Get a random integer(取一个随机整数)
 * choice - Make a random choice(随机选择)
+* wait_load.sh - Wait for the system load to meet a condition(等待系统负荷满足一个条件)
