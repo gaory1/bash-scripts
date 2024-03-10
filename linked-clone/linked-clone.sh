@@ -28,7 +28,8 @@ do
     test "$source" = "-" && continue
     test "$device" = "disk" || continue
     new_disk=$(dirname $source)/${new_name}-$i.img
-    qemu-img create -f qcow2 -b $source $new_disk
+    bkfmt=$(qemu-img info $source | awk '/^file format/{print $NF}')
+    qemu-img create -f qcow2 -b $source -F "$bkfmt" $new_disk
     chown libvirt-qemu $source
     virsh detach-disk $new_name $target --config
     virsh attach-disk $new_name $new_disk $target --driver qemu --subdriver=qcow2 --config
